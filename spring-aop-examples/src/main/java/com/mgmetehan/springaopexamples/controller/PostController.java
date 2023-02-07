@@ -1,5 +1,6 @@
 package com.mgmetehan.springaopexamples.controller;
 
+import com.mgmetehan.springaopexamples.annotation.RequireVerifiedMail;
 import com.mgmetehan.springaopexamples.model.Post;
 import com.mgmetehan.springaopexamples.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
+    @RequireVerifiedMail
     public ResponseEntity<Post> save(@RequestBody Post newPost) {
         return new ResponseEntity<>(postService.save(newPost), HttpStatus.CREATED);
     }
